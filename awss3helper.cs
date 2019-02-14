@@ -63,14 +63,13 @@ public class AWSStorageHelper
                 try
                 {
                     IAmazonS3 client;
-                    // using (client = Amazon.AWSClientFactory.CreateAmazonS3Client(_awsAccessKey, _awsSecretKey, Amazon.RegionEndpoint.USEast1))
                     using (client = new AmazonS3Client(_awsAccessKey, _awsSecretKey, Amazon.RegionEndpoint.USEast1))
                     {
                         var request = new PutObjectRequest()
                         {
                             BucketName = _bucketName,
                             CannedACL = S3CannedACL.PublicRead,                                                              
-                            Key = string.Format(folder + "/{0}", prefix + "-" + newGuidstr.Substring(0, 10) + "-" + filename + "." + filetype)
+                            Key = string.Format(folder + "/{0}", prefix + "-" + newGuidstr.Substring(0, 4) + "-" + filename + "." + filetype)
                                      
                         };
 
@@ -108,7 +107,7 @@ public class AWSStorageHelper
                         {
                             BucketName = _bucketName,
                             CannedACL = S3CannedACL.PublicRead,                                                               
-                            Key = string.Format("xxxxx" + "/{0}", "xxx" + "-" + newGuidstr.Substring(0, 10) + "-" + filename + ".pdf")
+                            Key = string.Format("xxxxx" + "/{0}", "xxx" + "-" + newGuidstr.Substring(0, 4) + "-" + filename + ".pdf")
                         };
 
                         using (var ms = new MemoryStream(imageData))
