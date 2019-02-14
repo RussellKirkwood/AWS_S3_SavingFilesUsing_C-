@@ -69,10 +69,9 @@ public class AWSStorageHelper
                         var request = new PutObjectRequest()
                         {
                             BucketName = _bucketName,
-                            CannedACL = S3CannedACL.PublicRead,//PERMISSION TO FILE PUBLIC ACCESIBLE
-                                                               //Key = string.Format(folder + "/{0}", prefix + "-" + newGuidstr.Substring(0, 5) + "." + filetype)
+                            CannedACL = S3CannedACL.PublicRead,                                                              
                             Key = string.Format(folder + "/{0}", prefix + "-" + newGuidstr.Substring(0, 10) + "-" + filename + "." + filetype)
-                            //Key = string.Format(folder + "/{0}", prefix + "-" + filename)             
+                                     
                         };
 
                         using (var ms = new MemoryStream(imageData))
@@ -103,14 +102,12 @@ public class AWSStorageHelper
                 try
                 {
                     IAmazonS3 client;
-                    // using (client = Amazon.AWSClientFactory.CreateAmazonS3Client(_awsAccessKey, _awsSecretKey, Amazon.RegionEndpoint.USEast1))
-                    using (client = new AmazonS3Client(_awsAccessKey, _awsSecretKey, Amazon.RegionEndpoint.USEast1))
+                       using (client = new AmazonS3Client(_awsAccessKey, _awsSecretKey, Amazon.RegionEndpoint.USEast1))
                     {
                         var request = new PutObjectRequest()
                         {
                             BucketName = _bucketName,
-                            CannedACL = S3CannedACL.PublicRead,//PERMISSION TO FILE PUBLIC ACCESIBLE
-                                                               //Key = string.Format(folder + "/{0}", prefix + "-" + newGuid + "." + filetype)
+                            CannedACL = S3CannedACL.PublicRead,                                                               
                             Key = string.Format("xxxxx" + "/{0}", "xxx" + "-" + newGuidstr.Substring(0, 10) + "-" + filename + ".pdf")
                         };
 
